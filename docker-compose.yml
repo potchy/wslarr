@@ -1,0 +1,108 @@
+version: "3.8"
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    env_file:
+      - config/.env
+      - config/bazarr.env
+    volumes:
+      - ${ROOT_DIRECTORY}/config/bazarr:/config
+      - ${ROOT_DIRECTORY}/data/media/movies:/data/media/movies
+      - ${ROOT_DIRECTORY}/data/media/tv:/data/media/tv
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
+  overseerr:
+    image: lscr.io/linuxserver/overseerr:latest
+    container_name: overseerr
+    env_file:
+      - config/.env
+      - config/overseerr.env
+    volumes:
+      - ${ROOT_DIRECTORY}/config/overseerr:/config
+    ports:
+      - 5055:5055
+    restart: unless-stopped
+
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    env_file:
+      - config/.env
+      - config/plex.env
+    volumes:
+      - ${ROOT_DIRECTORY}/config/plex:/config
+      - ${ROOT_DIRECTORY}/data/media/movies:/data/media/movies
+      - ${ROOT_DIRECTORY}/data/media/tv:/data/media/tv
+    restart: unless-stopped
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    env_file:
+      - config/.env
+      - config/prowlarr.env
+    volumes:
+      - ${ROOT_DIRECTORY}/config/prowlarr:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    env_file:
+      - config/.env
+      - config/radarr.env
+    volumes:
+      - ${ROOT_DIRECTORY}/config/radarr:/config
+      - ${ROOT_DIRECTORY}/data/media/movies:/data/media/movies
+      - ${ROOT_DIRECTORY}/data/torrents/movies:/data/torrents/movies
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    env_file:
+      - config/.env
+      - config/sonarr.env
+    volumes:
+      - ${ROOT_DIRECTORY}/config/sonarr:/config
+      - ${ROOT_DIRECTORY}/data/media/tv:/data/media/tv
+      - ${ROOT_DIRECTORY}/data/torrents/tv:/data/torrents/tv
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  tautulli:
+    image: lscr.io/linuxserver/tautulli:latest
+    container_name: tautulli
+    env_file:
+      - config/.env
+      - config/tautulli.env
+    volumes:
+      - ${ROOT_DIRECTORY}/config/tautulli:/config
+    ports:
+      - 8181:8181
+    restart: unless-stopped
+
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    env_file:
+      - config/.env
+      - config/transmission.env
+    volumes:
+      - ${ROOT_DIRECTORY}/config/transmission:/config
+      - ${ROOT_DIRECTORY}/data/torrents:/data/torrents
+      - ${ROOT_DIRECTORY}/data/torrents:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped

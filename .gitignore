@@ -1,0 +1,11 @@
+# ignore .env
+*.env
+
+# but not .sample.env
+!*.sample.env
+
+# ignore startup/config.vbs
+startup/config.vbs
+
+# but not startup/config.sample.vbs
+!startup/config.sample.vbs
