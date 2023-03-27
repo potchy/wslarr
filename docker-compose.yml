@@ -29,7 +29,6 @@ services:
   plex:
     image: lscr.io/linuxserver/plex:latest
     container_name: plex
-    network_mode: host
     env_file:
       - config/.env
       - config/plex.env
@@ -37,6 +36,8 @@ services:
       - ${ROOT_DIRECTORY}/config/plex:/config
       - ${ROOT_DIRECTORY}/data/media/movies:/data/media/movies
       - ${ROOT_DIRECTORY}/data/media/tv:/data/media/tv
+    ports:
+      - 32400:32400
     restart: unless-stopped
 
   prowlarr:
