@@ -60,8 +60,7 @@ services:
       - config/radarr.env
     volumes:
       - ${ROOT_DIRECTORY}/config/radarr:/config
-      - ${ROOT_DIRECTORY}/data/media/movies:/data/media/movies
-      - ${ROOT_DIRECTORY}/data/torrents/movies:/data/torrents/movies
+      - ${ROOT_DIRECTORY}/data:/data
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -74,8 +73,7 @@ services:
       - config/sonarr.env
     volumes:
       - ${ROOT_DIRECTORY}/config/sonarr:/config
-      - ${ROOT_DIRECTORY}/data/media/tv:/data/media/tv
-      - ${ROOT_DIRECTORY}/data/torrents/tv:/data/torrents/tv
+      - ${ROOT_DIRECTORY}/data:/data
     ports:
       - 8989:8989
     restart: unless-stopped
