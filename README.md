@@ -1,3 +1,3 @@
 # wslarr
 
-A Docker Compose template of Servarr apps tailored for use in Windows.
+Docker Compose template of Servarr apps tailored for use in Windows.
