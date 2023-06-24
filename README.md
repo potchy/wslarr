@@ -1,3 +1,3 @@
 # wslarr
 
-wslarr is a Servarr built to be run in Windows with Docker Desktop.
+A Docker Compose template of Servarr apps tailored for use in Docker Desktop
