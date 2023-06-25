@@ -1,3 +1,3 @@
 # wslarr
 
-Docker Compose template of Servarr apps. Especially tailored for use in Windows, considering Docker Desktop's limitations in this platform, but also works in Linux.
+Docker Compose template of Servarr apps. Optimized for use in Windows, considering Docker Desktop's limitations in this platform.
