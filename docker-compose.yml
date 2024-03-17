@@ -14,14 +14,14 @@ services:
       - 6767:6767
     restart: unless-stopped
 
-  overseerr:
-    image: lscr.io/linuxserver/overseerr:latest
-    container_name: overseerr
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
     env_file:
       - config/.env
-      - config/overseerr.env
+      - config/jellyseerr.env
     volumes:
-      - ${ROOT_DIRECTORY}/config/overseerr:/config
+      - ${ROOT_DIRECTORY}/config/jellyseerr:/config
     ports:
       - 5055:5055
     restart: unless-stopped
