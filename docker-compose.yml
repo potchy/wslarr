@@ -91,18 +91,18 @@ services:
       - 8989:8989
     restart: unless-stopped
 
-  transmission:
-    image: lscr.io/linuxserver/transmission:latest
-    container_name: transmission
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
     env_file:
       - config/.env
-      - config/transmission.env
+      - config/deluge.env
     volumes:
-      - ${ROOT_DIRECTORY}/config/transmission:/config
-      - ${ROOT_DIRECTORY}/data/torrents:/data/torrents
-      - ${ROOT_DIRECTORY}/data/torrents:/watch
+      - ${ROOT_DIRECTORY}/config/deluge:/config
+      - ${ROOT_DIRECTORY}/data/torrents:/downloads
     ports:
-      - 9091:9091
-      - 51413:51413
-      - 51413:51413/udp
+      - 8112:8112
+      - 6881:6881
+      - 6881:6881/udp
+      - 58846:58846
     restart: unless-stopped
