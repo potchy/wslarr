@@ -39,20 +39,6 @@ services:
       - 32400:32400
     restart: unless-stopped
 
-  emby:
-    image: emby/embyserver
-    container_name: emby
-    env_file:
-      - config/.env
-      - config/emby.env
-    volumes:
-      - ${ROOT_DIRECTORY}/config/emby:/config
-      - ${ROOT_DIRECTORY}/data/media/movies:/data/media/movies
-      - ${ROOT_DIRECTORY}/data/media/tv:/data/media/tv
-    ports:
-      - 8096:8096
-    restart: unless-stopped
-
   prowlarr:
     image: lscr.io/linuxserver/prowlarr:latest
     container_name: prowlarr
