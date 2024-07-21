@@ -85,7 +85,7 @@ services:
       - config/deluge.env
     volumes:
       - ${ROOT_DIRECTORY}/config/deluge:/config
-      - ${ROOT_DIRECTORY}/data/torrents:/downloads
+      - ${ROOT_DIRECTORY}/data/torrents:/data/torrents
     ports:
       - 8112:8112
       - 6881:6881
